@@ -17,13 +17,9 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        var indicePregunta = 0
-        val banco: List<Pregunta> = listOf<Pregunta>(
-            Pregunta("1?", listOf(Respuesta("1", R.drawable.messi),Respuesta("2", R.drawable.ronaldo)) , 0),
-            Pregunta("2?", listOf(Respuesta("3", R.drawable.messi),Respuesta("4", R.drawable.ronaldo)) , 0),
-            Pregunta("3?", listOf(Respuesta("5", R.drawable.messi),Respuesta("6", R.drawable.ronaldo)) , 0),
-        )
+        banco = banco.shuffled()
 
+        var indicePregunta = 0
         var respuestasCorrectas = 0
 
         val username = intent.getStringExtra("username")
@@ -33,6 +29,7 @@ class SecondActivity : AppCompatActivity() {
         val txtPregunta: TextView = findViewById(R.id.txtPregunta)
         val btnOptionOne: Button = findViewById(R.id.btnOptionOne)
         val btnOptionTwo: Button = findViewById(R.id.btnOptionTwo)
+        val btnOptionThree: Button = findViewById(R.id.btnOpcionThree)
         val imgResultado: ImageView = findViewById(R.id.imgResultado)
 
 
@@ -40,6 +37,7 @@ class SecondActivity : AppCompatActivity() {
             txtPregunta.setText(banco.get(indicePregunta).valor)
             btnOptionOne.setText(banco.get(indicePregunta).respuestas[0].valor)
             btnOptionTwo.setText(banco.get(indicePregunta).respuestas[1].valor)
+            btnOptionThree.setText(banco.get(indicePregunta).respuestas[2].valor)
         }
 
         setQuestion()
@@ -63,16 +61,21 @@ class SecondActivity : AppCompatActivity() {
             setQuestion()
         }
 
-        btnOptionOne.setOnClickListener(View.OnClickListener {
-            val opcion = 0
+        fun buttonClick(opcion: Int) {
             imgResultado.setImageResource(banco.get(indicePregunta).respuestas.get(opcion).imagenId)
             selectAnswer(opcion)
+        }
+
+        btnOptionOne.setOnClickListener(View.OnClickListener {
+            buttonClick(0)
         })
 
         btnOptionTwo.setOnClickListener(View.OnClickListener {
-            val opcion = 1
-            imgResultado.setImageResource(banco.get(indicePregunta).respuestas.get(opcion).imagenId)
-            selectAnswer(opcion)
+            buttonClick(1)
+        })
+
+        btnOptionThree.setOnClickListener(View.OnClickListener {
+            buttonClick(2)
         })
     }
 
@@ -123,4 +126,82 @@ class Respuesta(valor: String, imagenId: Int) {
     val imagenId: Int = imagenId
         get() = field
 }
+
+var banco: List<Pregunta> = listOf<Pregunta>(
+    Pregunta("El Mundial de Qatar será la edición número:", listOf(
+        Respuesta("21", R.drawable.messi),
+        Respuesta("22", R.drawable.ronaldo),
+        Respuesta("23", R.drawable.ronaldo),
+    ) , 1),
+    Pregunta("Qatar se convierte en el país número__ en albergar el Mundial", listOf(
+        Respuesta("16", R.drawable.messi),
+        Respuesta("17", R.drawable.ronaldo),
+        Respuesta("18", R.drawable.ronaldo),
+    ) , 2),
+    Pregunta("¿Cuántos estadios habrán en el Mundial de Qatar?", listOf(
+        Respuesta("8", R.drawable.messi),
+        Respuesta("9", R.drawable.ronaldo),
+        Respuesta("10", R.drawable.ronaldo),
+    ) , 0),
+    Pregunta("¿Cuál es la selección con mas copas mundiales ganadas?", listOf(
+        Respuesta("Brasil", R.drawable.messi),
+        Respuesta("Alemania", R.drawable.ronaldo),
+        Respuesta("Argentina", R.drawable.ronaldo),
+    ) , 0),
+    Pregunta("¿Quién es el jugador latino que ha anotado más goles en la historia de los mundiales?", listOf(
+        Respuesta("Gabriel Batistuta", R.drawable.messi),
+        Respuesta("Ronaldo Nazario", R.drawable.ronaldo),
+        Respuesta("Diego Maradona", R.drawable.ronaldo),
+    ) , 1),
+    Pregunta("¿Cómo se llamó la mascota de la Copa Mundial de 1982 en España?", listOf(
+        Respuesta("Juanito", R.drawable.messi),
+        Respuesta("Fuleco", R.drawable.ronaldo),
+        Respuesta("Naranjito", R.drawable.ronaldo),
+    ) , 2),
+    Pregunta("Contra que equipo Diego Maradona hizo el gol con “la mano de Dios”", listOf(
+        Respuesta("Italia", R.drawable.messi),
+        Respuesta("Alemania", R.drawable.ronaldo),
+        Respuesta("Inglaterra", R.drawable.ronaldo),
+    ) , 2),
+    Pregunta("El goleador del primer Mundial de fútbol, disputado en 1930 en Uruguay, fue…", listOf(
+        Respuesta("Bigode", R.drawable.messi),
+        Respuesta("Alcides Ghiggia", R.drawable.ronaldo),
+        Respuesta("Guillermo Stábile", R.drawable.ronaldo),
+    ) , 2),
+    Pregunta("¿Cómo se le llamó a la famosa victoria de Uruguay sobre Brasil en la final de 1950?", listOf(
+        Respuesta("El triunfo del siglo", R.drawable.messi),
+        Respuesta("El Maracanazo", R.drawable.ronaldo),
+        Respuesta("El Matabrasileirao", R.drawable.ronaldo),
+    ) , 1),
+    Pregunta("¿Sabes qué país tenía que organizar el Mundial de 1986 y tuvo que renunciar?", listOf(
+        Respuesta("Argentina", R.drawable.messi),
+        Respuesta("Colombia", R.drawable.ronaldo),
+        Respuesta("Uruguay", R.drawable.ronaldo),
+    ) , 1),
+    Pregunta("¿Cuál es el jugador latino que, junto al alemán Lothar Matthaeus, tiene más participaciones en el mundial?", listOf(
+        Respuesta("Pelé (Brasil)", R.drawable.messi),
+        Respuesta("Javier Zanetti (Argentina)", R.drawable.ronaldo),
+        Respuesta("Antonio Carbajal (México)", R.drawable.ronaldo),
+    ) , 2),
+    Pregunta("¿Dónde se disputó la Copa Mundial de 1998?", listOf(
+        Respuesta("Italia", R.drawable.messi),
+        Respuesta("Francia", R.drawable.ronaldo),
+        Respuesta("Estados Unidos", R.drawable.ronaldo),
+    ) , 1),
+    Pregunta("La selección de fútbol de Cuba participó en una Copa del Mundo. ¿Sabes en qué año fue?", listOf(
+        Respuesta("Suiza 1954", R.drawable.messi),
+        Respuesta("Francia 1938", R.drawable.ronaldo),
+        Respuesta("México 1970", R.drawable.ronaldo),
+    ) , 1),
+    Pregunta("¿Quién fue el jugador que marcó el gol que le dio el triunfo a España en la final de la Copa del Mundo del 2010 en Sudáfrica?", listOf(
+        Respuesta("Andrés Iniesta", R.drawable.messi),
+        Respuesta("David Villa", R.drawable.ronaldo),
+        Respuesta("Sergio Ramos", R.drawable.ronaldo),
+    ) , 0),
+    Pregunta("¿Cuál es la selección que más finales de la Copa Mundial ha disputado?", listOf(
+        Respuesta("Brasil", R.drawable.messi),
+        Respuesta("Alemania", R.drawable.ronaldo),
+        Respuesta("Italia", R.drawable.ronaldo),
+    ) , 1),
+)
 

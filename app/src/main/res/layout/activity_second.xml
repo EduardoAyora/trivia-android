@@ -34,7 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="pregunta"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Esta es una pregunta que tiene un texto largo y se divide"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +46,9 @@
 
     <Button
         android:id="@+id/btnOptionOne"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Messi"
@@ -55,7 +59,9 @@
 
     <Button
         android:id="@+id/btnOptionTwo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:text="Cristiano Ronaldo"
@@ -66,7 +72,9 @@
 
     <Button
         android:id="@+id/btnOpcionThree"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:text="Opcion 3"

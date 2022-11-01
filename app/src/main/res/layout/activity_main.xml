@@ -5,13 +5,16 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="20dp">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/ups" />
+        app:srcCompat="@drawable/ups"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/txtMensaje"

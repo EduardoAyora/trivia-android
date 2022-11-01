@@ -52,6 +52,8 @@ class SecondActivity : AppCompatActivity() {
                 toast.show()
             }
             if (indicePregunta == banco.size - 1) {
+                val toast = Toast.makeText(applicationContext, "Fin!", Toast.LENGTH_LONG)
+                toast.show()
                 val intent = Intent(this, EndActivity::class.java).apply {
                     putExtra("puntuacion", respuestasCorrectas.toString())
                 }
